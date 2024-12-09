@@ -73,7 +73,6 @@ class USBPrinterAdapter {
 
     fun init(reactContext: Context?) {
         mContext = reactContext
-        Thread.sleep(2000);
         mUSBManager = mContext!!.getSystemService(Context.USB_SERVICE) as UsbManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             mPermissionIntent =
@@ -85,7 +84,7 @@ class USBPrinterAdapter {
         val filter = IntentFilter(ACTION_USB_PERMISSION)
         filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
         mContext!!.registerReceiver(mUsbDeviceReceiver, filter)
-        Log.v(LOG_TAG, "USB Printer initialized123")
+        Log.v(LOG_TAG, "USB Printer initialized")
     }
 
 
