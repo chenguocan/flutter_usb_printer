@@ -210,10 +210,8 @@ class USBPrinterAdapter {
         val isConnected = openConnection()
         return if (isConnected) {
             Log.v(LOG_TAG, "Connected to device")
-            Thread {
-                val b = mUsbDeviceConnection!!.bulkTransfer(mEndPoint, bytes, bytes.size, 100000)
-                Log.i(LOG_TAG, "Return Status: $b")
-            }.start()
+            val b = mUsbDeviceConnection!!.bulkTransfer(mEndPoint, bytes, bytes.size, 100000)
+            Log.i(LOG_TAG, "Return Status: $b")
             true
         } else {
             Log.v(LOG_TAG, "failed to connected to device")
